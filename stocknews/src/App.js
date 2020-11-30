@@ -48,8 +48,9 @@ class App extends React.Component {
     return (
    <div>
      <h1>news</h1>
+     
      <button onClick = {this.fetchStockNews}>fetch</button>
-    <div>{this.state.news.map(this.newsCreator)}</div>
+    <div className = {style.newsArticleWrapper}>{this.state.news.map(this.newsCreator)}</div>
    </div>
       );
 
