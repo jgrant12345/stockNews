@@ -1,4 +1,5 @@
 import React from 'react'
+import style from "./index.module.css"
 
 class App extends React.Component {
   constructor(props){
@@ -8,16 +9,19 @@ class App extends React.Component {
       news: []
     }
   }
-  newsCreator = (array) =>{
+  newsCreator = (props) =>{
     return(
-      <div>{array['summary']}</div>
+      <a href = {props['summary']} className = {style.newsArticle}>
+        <img src = {props['image']} width = '200' height = '100'></img>
+        <h3>{props['title']}</h3>
+    <p>{props['summary']}</p>
+      </a>
     )
    
   }
 
 
   fetchStockNews = (props) => {
-    const pointerToThis = this;
     var tempNewsArray = []
     const API_NEWS_KEY = 'dSgyySKSrTp44mgcX443KL8bxVv5vWMg'
     let API_CALLS = 'https://api.polygon.io/v1/meta/symbols/'+'IBM'+'/news?perpage=5&page=1&apiKey=' + API_NEWS_KEY
@@ -43,6 +47,7 @@ class App extends React.Component {
   render(){
     return (
    <div>
+     <h1>news</h1>
      <button onClick = {this.fetchStockNews}>fetch</button>
     <div>{this.state.news.map(this.newsCreator)}</div>
    </div>
