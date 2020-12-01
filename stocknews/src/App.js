@@ -5,10 +5,25 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      username:'',
+      value:'',
       news: []
     }
   }
+  handleSubmit = (event) => {
+    console.log("this was clicked");
+    event.preventDefault();
+    this.fetchStockNews(this.state.value);
+    
+    
+  }
+
+  handleChange = (event) => {
+    this.setState({value: event.target.value})
+   
+   
+    
+  }
+
   newsCreator = (props) =>{
     return(
       <a href = {props['summary']} className = {style.newsArticle}>
@@ -24,7 +39,7 @@ class App extends React.Component {
   fetchStockNews = (props) => {
     var tempNewsArray = []
     const API_NEWS_KEY = 'dSgyySKSrTp44mgcX443KL8bxVv5vWMg'
-    let API_CALLS = 'https://api.polygon.io/v1/meta/symbols/'+'IBM'+'/news?perpage=5&page=1&apiKey=' + API_NEWS_KEY
+    let API_CALLS = 'https://api.polygon.io/v1/meta/symbols/'+ props+'/news?perpage=5&page=1&apiKey=' + API_NEWS_KEY
     fetch(API_CALLS)
     .then(response => response.json())
      .then(
@@ -48,8 +63,11 @@ class App extends React.Component {
     return (
    <div>
      <h1>news</h1>
+     <form onSubmit = {this.handleSubmit}>
+       <input type = "text" value = {this.state.value} onC hange = {this.handleChange}></input>
+       <input type = 'submit' value = "Submit"></input>
+     </form>
      
-     <button onClick = {this.fetchStockNews}>fetch</button>
     <div className = {style.newsArticleWrapper}>{this.state.news.map(this.newsCreator)}</div>
    </div>
       );
