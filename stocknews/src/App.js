@@ -53,8 +53,8 @@ class App extends React.Component {
   render(){
     return  (
       <nav className = {style.header}>
-        hi<div>
-          <h1>news</h1>
+        <div>
+          <h1>Type in a Stock Ticker</h1>
           {/* Form that allows user to fetch a stock */}
           <form onSubmit = {this.handleSubmit}>
             <input type = "text" className = {style.stockSearch} value = {this.state.value} onChange = {this.handleChange}></input>
