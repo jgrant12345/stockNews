@@ -1,11 +1,15 @@
 .newsArticleWrapper{
-  display: inline-grid;
-  grid-template-columns: auto auto auto;
-  grid-column-gap: 30px;
-}
+  display: grid;
+  align-items: center;
+  /* creates columns for responsive webPage */
+  grid-template-columns: repeat(auto-fit, minmax(80px, 20rem));
+  justify-content: center;
+  column-gap: 30px;
 
+}
+/* responsible for styling each news article */
 .newsArticle{
-  width: 400px;
+  text-overflow: ellipsis;
   height: 300px;
   padding: 20px;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2);
@@ -13,7 +17,6 @@
   text-align: center;
   font-size: 15px;
   padding-right: 20px;
-  grid-template-columns: 1fr 1fr 1fr;
   overflow: hidden;
   text-decoration: none;
   border-radius: 10px;
@@ -26,4 +29,13 @@
 }
 .newsArticle:hover{
   box-shadow: 0 16px 16px 0 rgba(0,0,0,0.2);
+}
+.news_Summary{
+  /* Used to create ellipses after three lines */
+    display: -webkit-box;
+    /* controls exactly where to place lines */
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

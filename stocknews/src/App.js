@@ -10,7 +10,6 @@ class App extends React.Component {
     }
   }
   handleSubmit = (event) => {
-    console.log("this was clicked");
     event.preventDefault();
     this.fetchStockNews(this.state.value);
     
@@ -21,6 +20,7 @@ class App extends React.Component {
     this.setState({value: event.target.value})
    
    
+   
     
   }
 
@@ -29,13 +29,13 @@ class App extends React.Component {
       <a href = {props['summary']} className = {style.newsArticle}>
         <img src = {props['image']} width = '200' height = '100'></img>
         <h3>{props['title']}</h3>
-    <p>{props['summary']}</p>
+    <p className = {style.news_Summary}>{props['summary']}</p>
       </a>
     )
    
   }
 
-
+  // This function fetches  news about stock that is inputed
   fetchStockNews = (props) => {
     var tempNewsArray = []
     const API_NEWS_KEY = 'dSgyySKSrTp44mgcX443KL8bxVv5vWMg'
@@ -44,7 +44,6 @@ class App extends React.Component {
     .then(response => response.json())
      .then(
       data => {
-      console.log(data);
       for(var index in data){
         let newsArticle = {title: data[index]['title'], 
         summary: data[index]['summary'], url: data[index]['url'], image: data[index]['image']}
@@ -63,8 +62,9 @@ class App extends React.Component {
     return (
    <div>
      <h1>news</h1>
+     {/* Form that allows user to fetch a stock */}
      <form onSubmit = {this.handleSubmit}>
-       <input type = "text" value = {this.state.value} onC hange = {this.handleChange}></input>
+       <input type = "text" value = {this.state.value} onChange = {this.handleChange}></input>
        <input type = 'submit' value = "Submit"></input>
      </form>
      
