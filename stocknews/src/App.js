@@ -21,7 +21,7 @@ class App extends React.Component {
   // function used in mapping to create and transform the news articles into cards
   newsCreator = (props) => {
     return(
-      <a href = {props['summary']} className = {style.newsArticle}>
+      <a href = {props['url']} className = {style.newsArticle}>
         <img src = {props['image']} width = '200' height = '100'></img>
         <h3>{props['title']}</h3>
     <p className = {style.news_Summary}>{props['summary']}</p>
@@ -38,6 +38,7 @@ class App extends React.Component {
     .then(response => response.json())
     .then(
       data => {
+        console.log(data)
       for(var index in data) {
         let newsArticle = {title: data[index]['title'], 
         summary: data[index]['summary'], url: data[index]['url'], image: data[index]['image']}
@@ -52,20 +53,26 @@ class App extends React.Component {
 
   render(){
     return  (
-      <nav className = {style.header}>
+      <div >
+        {/* The header for the webPage */}
+        <div className = {style.header}>
+        </div>
         <div>
-          <h1>Type in a Stock Ticker</h1>
+        <div className = {style.searchStockBackground}>
           {/* Form that allows user to fetch a stock */}
-          <form onSubmit = {this.handleSubmit}>
-            <input type = "text" className = {style.stockSearch} value = {this.state.value} onChange = {this.handleChange}></input>
-            <input type = 'submit' value = "Submit"></input>
+          <form className = {style.searchStockBackground} onSubmit = {this.handleSubmit}>
+            
+            <input placeholder = "Type in a ticker e.g. IBM" type = "text" className = {style.stockSearch} value = {this.state.value} onChange = {this.handleChange}></input>
+            
+            {/* <input type = 'submit' value = "Submit"></input> */}
           </form>
+        </div>
         </div>
 
     <div className = {style.newsArticleWrapper}>
       {this.state.news.map(this.newsCreator)}
     </div>
-   </nav>
+   </div>
     );
 
   }
