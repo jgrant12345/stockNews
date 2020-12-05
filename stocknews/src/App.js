@@ -1,5 +1,8 @@
 import React from 'react'
 import style from "./index.module.css"
+import IconButton from '@material-ui/core/IconButton';
+import { FaSearch } from 'react-icons/fa';
+
 
 class App extends React.Component {
   constructor(props){
@@ -24,7 +27,7 @@ class App extends React.Component {
       <a href = {props['url']} className = {style.newsArticle}>
         <img src = {props['image']} width = '200' height = '100'></img>
         <h3>{props['title']}</h3>
-    <p className = {style.news_Summary}>{props['summary']}</p>
+        <p className = {style.news_Summary}>{props['summary']}</p>
       </a>
     )
   }
@@ -38,11 +41,14 @@ class App extends React.Component {
     .then(response => response.json())
     .then(
       data => {
-        console.log(data)
       for(var index in data) {
-        let newsArticle = {title: data[index]['title'], 
-        summary: data[index]['summary'], url: data[index]['url'], image: data[index]['image']}
-        tempNewsArray.push(newsArticle)
+        let newsArticle = {
+          title: data[index]['title'], 
+          summary: data[index]['summary'], 
+          url: data[index]['url'], 
+          image: data[index]['image']
+        }
+        tempNewsArray.push(newsArticle);
       }
       this.setState({
         news: tempNewsArray
@@ -51,28 +57,36 @@ class App extends React.Component {
     )
   }
 
-  render(){
+  render() {
     return  (
-      <div >
+      <div>
         {/* The header for the webPage */}
-        <div className = {style.header}>
+        <div 
+          className = {style.header}>
         </div>
         <div>
-        <div className = {style.searchStockBackground}>
           {/* Form that allows user to fetch a stock */}
           <form className = {style.searchStockBackground} onSubmit = {this.handleSubmit}>
-            
-            <input placeholder = "Type in a ticker e.g. IBM" type = "text" className = {style.stockSearch} value = {this.state.value} onChange = {this.handleChange}></input>
-            
-            {/* <input type = 'submit' value = "Submit"></input> */}
+            <input 
+              placeholder = "Type in a ticker e.g. IBM" 
+              type = "text" 
+              className = {style.stockSearch} 
+              value = {this.state.value} 
+              onChange = {this.handleChange}>
+            </input>
+
+            <IconButton 
+              className = {style.magnifying_glass} 
+              type = 'submit' 
+              value = "Submit"><FaSearch />
+            </IconButton> 
           </form>
         </div>
-        </div>
 
-    <div className = {style.newsArticleWrapper}>
-      {this.state.news.map(this.newsCreator)}
+        <div className = {style.newsArticleWrapper}>
+          {this.state.news.map(this.newsCreator)}
+        </div>
     </div>
-   </div>
     );
 
   }
