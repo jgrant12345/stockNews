@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/stockNews/static/css/main.3778de98.chunk.css",
+    "main.css": "/stockNews/static/css/main.5e86edfe.chunk.css",
     "main.js": "/stockNews/static/js/main.331c0356.chunk.js",
     "main.js.map": "/stockNews/static/js/main.331c0356.chunk.js.map",
     "runtime-main.js": "/stockNews/static/js/runtime-main.3c541575.js",
@@ -8,13 +8,13 @@
     "static/js/2.43caa494.chunk.js": "/stockNews/static/js/2.43caa494.chunk.js",
     "static/js/2.43caa494.chunk.js.map": "/stockNews/static/js/2.43caa494.chunk.js.map",
     "index.html": "/stockNews/index.html",
-    "static/css/main.3778de98.chunk.css.map": "/stockNews/static/css/main.3778de98.chunk.css.map",
+    "static/css/main.5e86edfe.chunk.css.map": "/stockNews/static/css/main.5e86edfe.chunk.css.map",
     "static/js/2.43caa494.chunk.js.LICENSE.txt": "/stockNews/static/js/2.43caa494.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.3c541575.js",
     "static/js/2.43caa494.chunk.js",
-    "static/css/main.3778de98.chunk.css",
+    "static/css/main.5e86edfe.chunk.css",
     "static/js/main.331c0356.chunk.js"
   ]
 }
