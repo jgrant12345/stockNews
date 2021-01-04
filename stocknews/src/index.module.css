@@ -42,13 +42,13 @@
   text-overflow: ellipsis;
 }
 .stockSearch{
-  left: 70px;
-
+  position: absolute;
+  top: 20px;
   border-radius: 10px;
   outline: none;
   color: black;
   font-size: 16px;
-  max-width: 25vw;
+  
  
   height: 40px;
   color: black;
@@ -63,12 +63,19 @@
 }
 
 .searchStockBackground{
-  top: 20px;
- position: absolute;
- padding-left: 40%; 
+ display: flex;
+ align-items: center;
+ justify-content: center;
+
+ 
+
+ color: black;
    
 }
 .magnifying_glass{
+  position: absolute;
+  top: 20px;
+  left: 130px;
   width: 50px;
 }
 

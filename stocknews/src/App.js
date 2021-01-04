@@ -61,28 +61,27 @@ class App extends React.Component {
     return  (
       <div>
         {/* The header for the webPage */}
-        <div 
-          className = {style.header}>
-        </div>
-        <div>
-          {/* Form that allows user to fetch a stock */}
-          <form className = {style.searchStockBackground} onSubmit = {this.handleSubmit}>
-            <input 
-              placeholder = "Type in a ticker e.g. IBM" 
-              type = "text" 
-              className = {style.stockSearch} 
-              value = {this.state.value} 
-              onChange = {this.handleChange}>
-            </input>
+        <div className = {style.header}>
+          <div>
+            {/* Form that allows user to fetch a stock */}
+            <form className = {style.searchStockBackground} onSubmit = {this.handleSubmit}>
+              <input 
+                placeholder = "Type in a ticker e.g. IBM" 
+                type = "text" 
+                className = {style.stockSearch} 
+                value = {this.state.value} 
+                onChange = {this.handleChange}>
+              </input>
 
-            <IconButton 
-              className = {style.magnifying_glass} 
-              type = 'submit' 
-              value = "Submit"><FaSearch />
-            </IconButton> 
-          </form>
+              <IconButton 
+                className = {style.magnifying_glass} 
+                type = 'submit' 
+                value = "Submit"><FaSearch />
+              </IconButton> 
+            </form>
+          </div>
         </div>
-
+  
         <div className = {style.newsArticleWrapper}>
           {this.state.news.map(this.newsCreator)}
         </div>
